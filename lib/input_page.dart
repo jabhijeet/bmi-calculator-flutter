@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -37,8 +35,8 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: Row(
                   children: [
-                    Expanded(child: getGenderCard(maleIcon)),
-                    Expanded(child: getGenderCard(femaleIcon)),
+                    Expanded(child: getGenderCard(maleIcon, 'MALE')),
+                    Expanded(child: getGenderCard(femaleIcon, 'FEMALE')),
                   ],
                 ),
               ),
@@ -100,7 +98,7 @@ class _InputPageState extends State<InputPage> {
             ]));
   }
 
-  ReusableCard getGenderCard(IconData icon) {
+  ReusableCard getGenderCard(IconData icon, String title) {
     return ReusableCard(
         colour: icon == appData.selectedGender
             ? activeCardColor
@@ -111,7 +109,7 @@ class _InputPageState extends State<InputPage> {
           SizedBox.fromSize(
             size: Size(20, 20),
           ),
-          Text('MALE')
+          Text(title)
         ]),
         onTap: () {
           setState(() {
